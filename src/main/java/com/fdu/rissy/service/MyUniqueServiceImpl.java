@@ -1,6 +1,9 @@
 package com.fdu.rissy.service;
 
+import com.fdu.rissy.SpringTest;
 import com.fdu.rissy.pojo.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
@@ -13,8 +16,10 @@ import java.util.Random;
 @Service
 public class MyUniqueServiceImpl implements MyUniqueService {
 
+    private static final Logger logger = LoggerFactory.getLogger(MyUniqueServiceImpl.class);
+
     public User getUser(String name) {
-        System.out.println("test");
+        logger.info("Cache is not hit, put {} into cache", name);
         return populateCache(name);
     }
 
