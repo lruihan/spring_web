@@ -18,9 +18,7 @@
     <Loggers>
         <Root level="info">
             <AppenderRef ref="Console"/>
+            <AppenderRef ref="file-log"/>
         </Root>
-        <Logger name="test" level="info" additivity="false">
-            <AppenderRef ref="file-log" level="info"/>
-        </Logger>
     </Loggers>
 </Configuation>
