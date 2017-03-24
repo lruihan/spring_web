@@ -4,10 +4,17 @@
          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http />
-
-    <user-service>
-        <user name="user" password="password" authorities="ROLE_USER" />
-    </user-service>
+    <http pattern="/securityNone" security="none"/>
+    <http use-expressions="true">
+        <intercept-url pattern="/ehcache/*" access="isAuthenticated()" />
+        <http-basic entry-point-ref="customBasicAuthenticationEntryPoint"/>
+    </http>
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="user" password="password" authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
 
 </b:beans>
