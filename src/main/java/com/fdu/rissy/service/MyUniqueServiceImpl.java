@@ -4,11 +4,13 @@ import com.fdu.rissy.SpringTest;
 import com.fdu.rissy.pojo.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by lins13 on 3/22/17.
@@ -18,8 +20,14 @@ public class MyUniqueServiceImpl implements MyUniqueService {
 
     private static final Logger logger = LoggerFactory.getLogger(MyUniqueServiceImpl.class);
 
+    @Autowired
+    private AmqpTemplate messageQueue;
+
+    private final AtomicInteger counter = new AtomicInteger();
+
     public User getUser(String name) {
         logger.info("Cache is not hit, put {} into cache", name);
+        messageQueue.convertAndSend("hello " + counter.incrementAndGet());
         return populateCache(name);
     }
 
