@@ -19,6 +19,14 @@ public class FakeServiceImpl implements FakeService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void doSomething() {
+<<<<<<< HEAD
         userDao.save(new User("Rissy4"));
+=======
+        another();
+    }
+    
+    public void another() {
+        userDao.save(new User("Rissy7"));
+>>>>>>> Add @Transaction for JPA Object Update (will commit automatically)
     }
 }
