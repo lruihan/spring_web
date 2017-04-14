@@ -6,5 +6,6 @@
     <persistence-unit name="persistenceUnit"
                       transaction-type="RESOURCE_LOCAL">
         <class>com.fdu.rissy.pojo.User</class>
+        <class>com.fdu.rissy.pojo.UserInfo</class>
     </persistence-unit>
 </persistence>

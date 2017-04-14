@@ -1,6 +1,7 @@
 package com.fdu.rissy.controller;
 
 import com.fdu.rissy.pojo.User;
+import com.fdu.rissy.pojo.UserInfo;
 import com.fdu.rissy.service.MyUniqueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,4 +19,9 @@ public class MyUniqueControllerImpl implements MyUniqueController{
     public User getUser(@RequestParam(value = "name") String name) {
         return myUniqueService.getUser(name);
     }
+
+    public UserInfo saveUserInfo(@RequestParam(value = "name") String name, @RequestParam(value = "age") int age) {
+        return myUniqueService.saveUserInfo(name, age);
+    }
+
 }

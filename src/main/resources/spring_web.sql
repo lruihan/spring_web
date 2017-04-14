@@ -1,0 +1,25 @@
+CREATE TABLE user2 (
+  id SERIAL NOT NULL,
+  name VARCHAR NOT NULL
+);
+
+
+ALTER TABLE user2
+  ADD CONSTRAINT user2_pkey PRIMARY KEY (id);
+
+ALTER TABLE user2
+  ADD CONSTRAINT name_unique UNIQUE (name);
+
+CREATE TABLE user_info (
+  name VARCHAR NOT NULL,
+  age  INT4 NOT NULL
+);
+
+ALTER TABLE user_info
+  ADD CONSTRAINT user_info_pkey PRIMARY KEY (name);
+
+ALTER TABLE user_info
+  ADD CONSTRAINT user_info_user2_fkey FOREIGN KEY (name)
+REFERENCES user2 (name)
+ON DELETE RESTRICT
+ON UPDATE RESTRICT;

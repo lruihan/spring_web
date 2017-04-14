@@ -20,12 +20,12 @@ public class SpringTest {
 
         User user1 = myUniqueService.getUser("Rissy1");
         //System.out.println(user1.getName() + ", " + user1.getAge());
-        logger.info("name : {}, age : {}", user1.getName(), user1.getAge());
-        User user2 = myUniqueService.getUser("Rissy2");
-        System.out.println(user2.getName() + ", " + user2.getAge());
-        User user3 = myUniqueService.getUser("Rissy1");
-        System.out.println(user3.getName() + ", " + user3.getAge());
-        User user4 = myUniqueService.getUser("Rissy2");
-        System.out.println(user4.getName() + ", " + user4.getAge());
+//        logger.info("name : {}, age : {}", user1.getName(), user1.getAge());
+//        User user2 = myUniqueService.getUser("Rissy2");
+//        System.out.println(user2.getName() + ", " + user2.getAge());
+//        User user3 = myUniqueService.getUser("Rissy1");
+//        System.out.println(user3.getName() + ", " + user3.getAge());
+//        User user4 = myUniqueService.getUser("Rissy2");
+//        System.out.println(user4.getName() + ", " + user4.getAge());
     }
 }

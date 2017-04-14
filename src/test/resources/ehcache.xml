@@ -1,0 +1,13 @@
+<ehcache>
+    <diskStore path="/tmp/cacheData"/>
+    <cache name="MyCache"
+           maxEntriesLocalHeap="1"
+           eternal="false"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="120"
+           maxEntriesLocalDisk="5"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+</ehcache>

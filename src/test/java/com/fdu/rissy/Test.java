@@ -1,9 +1,5 @@
 package com.fdu.rissy;
 
-import com.fdu.rissy.pojo.User;
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-import net.sf.ehcache.Element;
 import org.apache.commons.codec.binary.Base64;
 
 

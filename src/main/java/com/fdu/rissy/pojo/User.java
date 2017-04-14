@@ -10,39 +10,30 @@ import java.io.Serializable;
 @Table(name = "user2")
 public class User implements Serializable{
 
+    private static final long serialVersionUID = 6682783604824499377L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "name", nullable = false)
-    private String name;
 
-    @Column(name = "age", nullable = false)
-    private int age;
+    private String name;
 
     public User() {
     }
 
-    public User(String name, int age) {
+    public User(String name) {
         this.name = name;
-        this.age = age;
     }
 
     public String getName() {
         return name;
     }
 
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }
