@@ -46,15 +46,9 @@ public class MyUniqueServiceImpl implements MyUniqueService {
     }
 
     //Must add @Transactional to override the readOnly = true on class level
-<<<<<<< HEAD
-    //@Transactional
-    public UserInfo saveUserInfo(String name, int age) {
-        UserInfo userInfo = userInfoDao.getOne(name);
-=======
     @Transactional
     public UserInfo saveUserInfo(String name, int age) {
         UserInfo userInfo = userInfoDao.findByName(name);
->>>>>>> Add @Transaction for JPA Object Update (will commit automatically)
         if(userInfo != null) {
             userInfo.setAge(age);
         }else {
