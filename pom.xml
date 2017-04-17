@@ -123,6 +123,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- junit -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -134,6 +135,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+        <!-- jmx -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jmx</artifactId>
+            <version>2.0.8</version>
         </dependency>
     </dependencies>
     <build>

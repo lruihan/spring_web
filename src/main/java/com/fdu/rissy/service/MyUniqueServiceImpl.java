@@ -39,6 +39,7 @@ public class MyUniqueServiceImpl implements MyUniqueService {
         return populateCache(name);
     }
 
+    @Transactional
     public User populateCache(String name) {
         User user = new User(name);
         userDao.save(user);
