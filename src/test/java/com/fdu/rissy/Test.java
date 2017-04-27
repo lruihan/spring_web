@@ -64,11 +64,27 @@ public class Test {
 //        User myObj = (User)el.getObjectValue();
 //        System.out.println(myObj.getName() + ", " + myObj.getAge());
 
-        String credentials = "user:password";
+        String credentials = "root:Testesx123!";
         String base64ClientCredentials = new String(Base64.encodeBase64(credentials.getBytes()));
         //Basic dXNlcjpwYXNzd29yZA==
         System.out.println("Basic " + base64ClientCredentials);
 
+        String str = "{  \n" +
+                "    \n" +
+                "    \"request\":  {\n" +
+                "                \"LCAttributes\": {\n" +
+                "                                    \"VirtualAddressManagementApplication\": \"https://10.62.92.18\"\n" +
+                "                                  }\n" +
+                "    }\n" +
+                "}";
+//        String str = "{\n" +
+//                "  \"Message\": \"The command was successful\",\n" +
+//                "  \"MessageID\": \"LC001\",\n" +
+//                "  \"RebootRequired\": \"No\",\n" +
+//                "  \"ReturnValue\": \"0\",\n" +
+//                "  \"SetResult\": \"Set CurrentValue\"\n" +
+//                "}";
+        System.out.println(str.getBytes().length);
 
     }
 }
