@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Created by lins13 on 4/27/17.
  */
-@SpringBootApplication
+//@SpringBootApplication
 public class MocksApplication {
 
     public static void main(String[] args) {

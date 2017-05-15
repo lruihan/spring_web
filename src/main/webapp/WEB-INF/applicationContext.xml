@@ -12,7 +12,9 @@
 
     <import resource="DBJPAContext.xml" />
 
-    <context:component-scan base-package="com.fdu.rissy.**.*" />
+    <context:component-scan base-package="com.fdu.rissy.**.*">
+        <context:exclude-filter type="regex" expression="com\.fdu\.rissy\.onlyForTest\..*" />
+    </context:component-scan>
     <cache:annotation-driven cache-manager="springCacheManager" />
     <bean id="springCacheManager" name="springCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cacheManager-ref="cacheManager" />
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:configLocation="/WEB-INF/ehcache.xml" />
