@@ -1,5 +1,8 @@
 package com.fdu.rissy.pojo;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,13 +16,12 @@ public class User implements Serializable{
     private static final long serialVersionUID = 6682783604824499377L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
-
     @Column(name = "name", nullable = false)
-
     private String name;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
+    @Fetch(value = FetchMode.SELECT)
+    private UserInfo userInfo;
 
     public User() {
     }
@@ -34,6 +36,14 @@ public class User implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
 }

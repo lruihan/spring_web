@@ -1,11 +1,11 @@
 package com.fdu.rissy.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -18,26 +18,25 @@ public class UserInfo implements Serializable{
     private static final long serialVersionUID = 2906244599811742224L;
 
     @Id
-    @Column(name = "name")
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private Integer id;
 
-    @Column(name = "age")
+
+    @Column(name = "age", nullable = false)
     private int age;
+
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "name", nullable = false)
+    private User user;
 
     public UserInfo() {
     }
 
-    public UserInfo(String name, int age) {
-        this.name = name;
+    public UserInfo(User user, int age) {
+        this.user = user;
         this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getAge() {
@@ -46,6 +45,14 @@ public class UserInfo implements Serializable{
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 

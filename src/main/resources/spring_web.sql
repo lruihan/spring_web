@@ -1,22 +1,19 @@
 CREATE TABLE user2 (
-  id SERIAL NOT NULL,
   name VARCHAR NOT NULL
 );
 
 
 ALTER TABLE user2
-  ADD CONSTRAINT user2_pkey PRIMARY KEY (id);
-
-ALTER TABLE user2
-  ADD CONSTRAINT name_unique UNIQUE (name);
+  ADD CONSTRAINT user2_pkey PRIMARY KEY (name);
 
 CREATE TABLE user_info (
+  id SERIAL NOT NULL,
   name VARCHAR NOT NULL,
   age  INT4 NOT NULL
 );
 
 ALTER TABLE user_info
-  ADD CONSTRAINT user_info_pkey PRIMARY KEY (name);
+  ADD CONSTRAINT user_info_pkey PRIMARY KEY (id);
 
 ALTER TABLE user_info
   ADD CONSTRAINT user_info_user2_fkey FOREIGN KEY (name)

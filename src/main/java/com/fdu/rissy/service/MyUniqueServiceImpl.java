@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by lins13 on 3/22/17.
  */
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class MyUniqueServiceImpl implements MyUniqueService {
 
     private static final Logger logger = LoggerFactory.getLogger(MyUniqueServiceImpl.class);
@@ -36,7 +36,8 @@ public class MyUniqueServiceImpl implements MyUniqueService {
     public User getUser(String name) {
         logger.info("Cache is not hit, put {} into cache", name);
         messageQueue.convertAndSend("hello " + counter.incrementAndGet());
-        return populateCache(name);
+        //return populateCache(name);
+        return userDao.findByName(name);
     }
 
     @Transactional
@@ -49,13 +50,9 @@ public class MyUniqueServiceImpl implements MyUniqueService {
     //Must add @Transactional to override the readOnly = true on class level
     @Transactional
     public UserInfo saveUserInfo(String name, int age) {
-        UserInfo userInfo = userInfoDao.findByName(name);
-        if(userInfo != null) {
-            userInfo.setAge(age);
-        }else {
-            userInfo = new UserInfo(name, age);
-            userInfoDao.save(userInfo);
-        }
+        User user = userDao.findByName(name);
+        UserInfo  userInfo = new UserInfo(user, age);
+        userInfoDao.save(userInfo);
         return userInfo;
     }
 }

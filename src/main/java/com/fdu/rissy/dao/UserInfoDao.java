@@ -8,5 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Created by lins13 on 4/14/17.
  */
 public interface UserInfoDao extends JpaRepository<UserInfo, String> {
-    UserInfo findByName(String name);
 }
